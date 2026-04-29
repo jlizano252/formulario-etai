@@ -1,10 +1,10 @@
 <div>
     <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
 
-        {{-- Barra superior premium --}}
+        
         <div style="height:5px;background:linear-gradient(90deg,#01498d,#42ab34,#fcd841);"></div>
 
-        {{-- Header --}}
+        
         <div class="card-body pb-3 pt-4 px-4">
 
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -21,7 +21,8 @@
 
                 <span class="badge rounded-pill px-4 py-2 fs-6 text-white shadow-sm"
                     style="background:#01498d;">
-                    {{ $students->total() }}
+                    <?php echo e($students->total()); ?>
+
                 </span>
 
             </div>
@@ -52,7 +53,7 @@
 
 
 
-        {{-- Tabla --}}
+        
         <div class="table-responsive">
 
             <table class="table align-middle table-hover mb-0">
@@ -72,38 +73,40 @@
 
                 <tbody>
 
-                    @forelse($students as $student)
+                    <?php $__empty_1 = true; $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
                     <tr>
 
                         <td class="ps-4">
 
                             <button
-                                wire:click="openModal({{ $student->id }})"
+                                wire:click="openModal(<?php echo e($student->id); ?>)"
                                 class="btn btn-link p-0 fw-semibold text-decoration-none"
                                 style="color:#01498d;">
 
-                                {{ ucfirst($student->name . ' ' . $student->lastname) }}
+                                <?php echo e(ucfirst($student->name . ' ' . $student->lastname)); ?>
+
 
                             </button>
 
                         </td>
 
-                        <td>{{ $student->ide }}</td>
+                        <td><?php echo e($student->ide); ?></td>
 
-                        <td>{{ $student->career }}</td>
+                        <td><?php echo e($student->career); ?></td>
 
-                        <td>{{ $student->email }}</td>
+                        <td><?php echo e($student->email); ?></td>
 
-                        <td>{{ $student->mobile }}</td>
+                        <td><?php echo e($student->mobile); ?></td>
 
                         <td class="pe-4 text-muted">
-                            {{ \Carbon\Carbon::parse($student->created_at)->format('d/m/Y') }}
+                            <?php echo e(\Carbon\Carbon::parse($student->created_at)->format('d/m/Y')); ?>
+
                         </td>
 
                     </tr>
 
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                     <tr>
                         <td colspan="5" class="text-center py-5">
@@ -119,7 +122,7 @@
                         </td>
                     </tr>
 
-                    @endforelse
+                    <?php endif; ?>
 
                 </tbody>
 
@@ -129,21 +132,22 @@
 
 
 
-        {{-- Footer paginación --}}
-        @if($students->hasPages())
+        
+        <?php if($students->hasPages()): ?>
         <div class="card-footer bg-white border-0 py-3 px-4">
             <div class="d-flex justify-content-end">
-                {{ $students->links() }}
+                <?php echo e($students->links()); ?>
+
             </div>
         </div>
-        @endif
+        <?php endif; ?>
 
     </div>
 
 
 
-    {{-- Modal detalle --}}
-    @if($showModal && $selectedStudent)
+    
+    <?php if($showModal && $selectedStudent): ?>
 
     <div class="modal fade show d-block" tabindex="-1">
 
@@ -151,7 +155,7 @@
 
             <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
 
-                {{-- Header modal --}}
+                
                 <div style="height:5px;background:linear-gradient(90deg,#01498d,#42ab34,#fcd841);"></div>
 
                 <div class="modal-header border-0 pb-0">
@@ -188,7 +192,8 @@
                         </div>
 
                         <h5 class="fw-bold mt-3 mb-0">
-                            {{ ucfirst($selectedStudent->name . ' ' . $selectedStudent->lastname) }}
+                            <?php echo e(ucfirst($selectedStudent->name . ' ' . $selectedStudent->lastname)); ?>
+
                         </h5>
 
                     </div>
@@ -201,38 +206,39 @@
 
                             <tr>
                                 <th style="width:35%;color:#01498d;">Identificación</th>
-                                <td>{{ $selectedStudent->ide }}</td>
+                                <td><?php echo e($selectedStudent->ide); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Nombre</th>
-                                <td>{{ $selectedStudent->name }}</td>
+                                <td><?php echo e($selectedStudent->name); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Apellidos</th>
-                                <td>{{ $selectedStudent->lastname }}</td>
+                                <td><?php echo e($selectedStudent->lastname); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Correo</th>
-                                <td>{{ $selectedStudent->email }}</td>
+                                <td><?php echo e($selectedStudent->email); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Teléfono</th>
-                                <td>{{ $selectedStudent->mobile }}</td>
+                                <td><?php echo e($selectedStudent->mobile); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="width:35%;color:#01498d;">Carrera</th>
-                                <td>{{ $selectedStudent->career }}</td>
+                                <td><?php echo e($selectedStudent->career); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Fecha Registro</th>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($selectedStudent->created_at)->format('d/m/Y h:i A') }}
+                                    <?php echo e(\Carbon\Carbon::parse($selectedStudent->created_at)->format('d/m/Y h:i A')); ?>
+
                                 </td>
                             </tr>
                             <tr class="table-light">
@@ -243,22 +249,22 @@
 
                             <tr>
                                 <th style="color:#42ab34;">Contacto #1</th>
-                                <td>{{ $selectedStudent->emergency_name_1 }}</td>
+                                <td><?php echo e($selectedStudent->emergency_name_1); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#42ab34;">Teléfono #1</th>
-                                <td>{{ $selectedStudent->emergency_phone_1 }}</td>
+                                <td><?php echo e($selectedStudent->emergency_phone_1); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#42ab34;">Contacto #2</th>
-                                <td>{{ $selectedStudent->emergency_name_2 }}</td>
+                                <td><?php echo e($selectedStudent->emergency_name_2); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#42ab34;">Teléfono #2</th>
-                                <td>{{ $selectedStudent->emergency_phone_2 }}</td>
+                                <td><?php echo e($selectedStudent->emergency_phone_2); ?></td>
                             </tr>
                         </tbody>
 
@@ -289,6 +295,6 @@
 
     <div class="modal-backdrop fade show"></div>
 
-    @endif
+    <?php endif; ?>
 
-</div>
+</div><?php /**PATH C:\laragon\www\formulario-etai\formulario-etai\resources\views/livewire/admin/dashboard/students-table.blade.php ENDPATH**/ ?>

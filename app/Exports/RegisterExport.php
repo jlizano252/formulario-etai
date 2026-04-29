@@ -20,11 +20,16 @@ class RegisterExport implements FromCollection, WithStrictNullComparison, WithHe
         return Student::orderBy('created_at', 'desc')
             ->get()
             ->map(fn($s) => [
-                'IDE'        => $s->ide,
-                'NAME'       => strtoupper(trim($s->name . ' ' . $s->lastname)),
-                'EMAIL'      => $s->email,
-                'PHONE'      => $s->mobile,
-                'REGISTERED' => $s->created_at->toDateString(),
+                'IDENTIFICACIÓN'   => $s->ide,
+                'NOMBRE COMPLETO'  => strtoupper(trim($s->name . ' ' . $s->lastname)),
+                'CORREO'           => $s->email,
+                'TELÉFONO'       => $this->formatPhone($s->mobile),
+                'CARRERA'          => $s->career,
+                'CONTACTO 1'       => $s->emergency_name_1,
+                'TELÉFONO C1'    => $this->formatPhone($s->emergency_phone_1),
+                'CONTACTO 2'       => $s->emergency_name_2,
+                'TELÉFONO C2'    => $this->formatPhone($s->emergency_phone_2),
+                'FECHA REGISTRO'   => $s->created_at->toDateString(),
             ]);
     }
 
@@ -35,12 +40,12 @@ class RegisterExport implements FromCollection, WithStrictNullComparison, WithHe
 
     public function headings(): array
     {
-        return ['ID NUMBER', 'NAME', 'EMAIL', 'PHONE', 'REGISTERED'];
+        return ['IDENTIFICACIÓN', 'ESTUDIANTE', 'CORREO', 'TELÉFONO', 'CARRERA', 'CONTACTO DE EMERGENCIA 1', 'TELÉFONO DE EMERGENCIA 1', 'CONTACTO DE EMERGENCIA 2', 'TELÉFONO DE EMERGENCIA 2', 'REGISTRADO'];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:E1')->applyFromArray([
+        $sheet->getStyle('A1:J1')->applyFromArray([
             'font' => [
                 'bold'  => true,
                 'size'  => 12,
@@ -55,5 +60,19 @@ class RegisterExport implements FromCollection, WithStrictNullComparison, WithHe
                 'vertical'   => Alignment::VERTICAL_CENTER,
             ],
         ]);
+    }
+
+    private function formatPhone(string $phone): string
+    {
+        // Quita todo excepto dígitos y el +
+        $clean = preg_replace('/[^\d+]/', '', $phone);
+
+        // Si tiene +506 al inicio, formatea como +506 XXXX-XXXX
+        if (preg_match('/^\+506(\d{4})(\d{4})$/', $clean, $m)) {
+            return '+506 ' . $m[1] . '-' . $m[2];
+        }
+
+        // Para otros países, devuelve limpio con el +
+        return $clean;
     }
 }

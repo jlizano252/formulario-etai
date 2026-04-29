@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Public\EnrollmentForm\V1;
 use App\Models\Student;
 use App\Helpers\MailService;
 use Livewire\Component;
+use Illuminate\Support\Facades\Log;
 
 class StudentForm extends Component
 {
@@ -21,6 +22,7 @@ class StudentForm extends Component
     public string $lastname  = '';
     public string $email     = '';
     public string $mobile    = '';
+    public string $career = '';
 
     // Paso 3 — Contactos de Emergencia
 
@@ -44,7 +46,8 @@ class StudentForm extends Component
                     'name'     => 'required|string|min:2|max:180',
                     'lastname' => 'required|string|min:2|max:180',
                     'email'    => 'required|email|max:180|unique:students,email',
-                    'mobile'   => ['required', 'string', 'regex:/^\+506\s?[0-9]{4}-?[0-9]{4}$/'],
+                    'mobile' => ['required', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
+                    'career' => 'required|string|max:150',
                 ]);
 
                 break;
@@ -132,38 +135,27 @@ class StudentForm extends Component
     {
         $this->resetErrorBag();
 
-        $this->validateData();
-
         $params = [
-
-            // estudiante
             'ide'      => $this->ide,
             'name'     => $this->name,
             'lastname' => $this->lastname,
             'email'    => $this->email,
             'mobile'   => $this->mobile,
+            'career'   => $this->career,
 
-            // contacto 1
-            'contact1_name'      => $this->contact1_name,
-            'contact1_relation'  => $this->contact1_relation,
-            'contact1_phone'     => $this->contact1_phone,
+            'emergency_name_1'  => $this->contact1_name,
+            'emergency_phone_1' => $this->contact1_phone,
 
-            // contacto 2
-            'contact2_name'      => $this->contact2_name,
-            'contact2_relation'  => $this->contact2_relation,
-            'contact2_phone'     => $this->contact2_phone,
+            'emergency_name_2'  => $this->contact2_name,
+            'emergency_phone_2' => $this->contact2_phone,
         ];
 
         try {
-
             Student::create($params);
-
             // MailService::sendRegisterMailNotification($params);
-
-            redirect()->route('public.register.success');
+            $this->redirect(route('public.register.success'));
         } catch (\Exception $e) {
-
-            redirect()->route('public.register.error');
+            $this->redirect(route('public.register.error'));
         }
     }
 

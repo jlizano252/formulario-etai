@@ -13,16 +13,16 @@
 
     <div class="container py-3" data-layout="container">
 
-        {{-- Navbar --}}
+        
         <nav class="navbar navbar-expand-lg admin-navbar mb-4">
 
-            {{-- Logo --}}
+            
             <a class="navbar-brand d-flex align-items-center gap-2"
-                href="{{ route('public.postularse.index') }}">
+                href="<?php echo e(route('public.postularse.index')); ?>">
 
                 <div class="brand-logo-box">
                     <img
-                        src="{{ asset('images/registros.png') }}"
+                        src="<?php echo e(asset('images/registros.png')); ?>"
                         width="250"
                         alt="Logo">
                 </div>
@@ -37,7 +37,7 @@
                 </div> -->
             </a>
 
-            {{-- Right Side --}}
+            
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item dropdown">
                     <a class="nav-link p-0" id="navbarDropdownUser" role="button"
@@ -47,39 +47,43 @@
 
                             <div class="text-end lh-sm">
                                 <div class="fw-semibold" style="color:#01498d;font-size:.95rem;">
-                                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
-                                    {{ \Illuminate\Support\Facades\Auth::user()->lastname }}
+                                    <?php echo e(\Illuminate\Support\Facades\Auth::user()->name); ?>
+
+                                    <?php echo e(\Illuminate\Support\Facades\Auth::user()->lastname); ?>
+
                                 </div>
 
                                 <small class="text-muted">
-                                    {{ \Illuminate\Support\Facades\Auth::user()->ide }}
+                                    <?php echo e(\Illuminate\Support\Facades\Auth::user()->ide); ?>
+
                                 </small>
                             </div>
 
                             <div class="avatar avatar-xl">
                                 <img class="rounded-circle shadow-sm"
-                                    src="{{ asset('images/team/avatar.png') }}"
+                                    src="<?php echo e(asset('images/team/avatar.png')); ?>"
                                     alt="Avatar">
                             </div>
 
                         </div>
                         </a>
 
-                        {{-- Dropdown --}}
+                        
                         <div class="dropdown-menu dropdown-menu-end border-0 shadow rounded-4 py-2 mt-2">
 
                             <div class="px-3 pb-2 border-bottom">
                                 <div class="fw-semibold" style="color:#01498d;">
-                                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                                    <?php echo e(\Illuminate\Support\Facades\Auth::user()->name); ?>
+
                                 </div>
                                 <small class="text-muted">
                                     Sesión activa
                                 </small>
                             </div>
-                            <form action="{{ route('logout') }}"
+                            <form action="<?php echo e(route('logout')); ?>"
                                 method="post"
                                 class="mt-2">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <button class="dropdown-item d-flex align-items-center gap-2 py-2"
                                     type="submit">
                                     <i class="fas fa-sign-out-alt text-danger"></i>
@@ -91,12 +95,12 @@
             </ul>
         </nav>
 
-        {{-- Main Card Content --}}
+        
         <div class="content">
 
             <div class="admin-content-card">
 
-                @yield('main-content')
+                <?php echo $__env->yieldContent('main-content'); ?>
 
             </div>
 
@@ -108,4 +112,4 @@
 
 <!-- ===============================================-->
 <!-- End Main Content -->
-<!-- ===============================================-->
+<!-- ===============================================--><?php /**PATH C:\laragon\www\formulario-etai\formulario-etai\resources\views/layout/sections/dashboard/main-container.blade.php ENDPATH**/ ?>

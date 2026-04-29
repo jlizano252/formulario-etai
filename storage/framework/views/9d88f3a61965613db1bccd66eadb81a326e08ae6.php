@@ -1,7 +1,7 @@
 <div>
     <div class="card shadow-lg border-0 rounded-4 position-relative overflow-hidden">
 
-        {{-- Loading overlay --}}
+        
         <div wire:loading class="position-absolute top-0 start-0 w-100 h-100"
             style="z-index:20;background:rgba(255,255,255,.82);backdrop-filter:blur(4px);">
             <div class="d-flex justify-content-center align-items-center h-100">
@@ -9,45 +9,45 @@
             </div>
         </div>
 
-        {{-- Header line --}}
+        
         <div style="height:6px;background:linear-gradient(90deg,#01498d,#42ab34,#fcd841);"></div>
 
-        {{-- Logo --}}
+        
         <div class="d-flex justify-content-center mt-4">
             <img class="img-fluid"
-                src="{{ asset('images/ivetc-brand-footer.png') }}"
+                src="<?php echo e(asset('images/ivetc-brand-footer.png')); ?>"
                 style="max-width:130px;">
         </div>
 
-        {{-- Indicador de pasos --}}
+        
         <div class="d-flex justify-content-center py-3">
             <div class="d-flex align-items-center gap-3">
 
                 <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold text-white"
-                    style="width:32px;height:32px;background: {{ $current_step >= 1 ? '#01498d' : '#dee2e6' }};">
+                    style="width:32px;height:32px;background: <?php echo e($current_step >= 1 ? '#01498d' : '#dee2e6'); ?>;">
                     1
                 </div>
 
-                <div style="width:35px;height:3px;background: {{ $current_step >= 2 ? '#42ab34' : '#dee2e6' }};"></div>
+                <div style="width:35px;height:3px;background: <?php echo e($current_step >= 2 ? '#42ab34' : '#dee2e6'); ?>;"></div>
 
                 <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold text-white"
-                    style="width:32px;height:32px;background: {{ $current_step >= 2 ? '#42ab34' : '#dee2e6' }};">
+                    style="width:32px;height:32px;background: <?php echo e($current_step >= 2 ? '#42ab34' : '#dee2e6'); ?>;">
                     2
                 </div>
 
-                <div style="width:35px;height:3px;background: {{ $current_step >= 3 ? '#42ab34' : '#dee2e6' }};"></div>
+                <div style="width:35px;height:3px;background: <?php echo e($current_step >= 3 ? '#42ab34' : '#dee2e6'); ?>;"></div>
 
                 <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold text-white"
-                    style="width:32px;height:32px;background: {{ $current_step >= 3 ? '#42ab34' : '#dee2e6' }};">
+                    style="width:32px;height:32px;background: <?php echo e($current_step >= 3 ? '#42ab34' : '#dee2e6'); ?>;">
                     3
                 </div>
 
-                <div style="width:35px;height:3px;background: {{ $current_step >= 4 ? '#fcd841' : '#dee2e6' }};"></div>
+                <div style="width:35px;height:3px;background: <?php echo e($current_step >= 4 ? '#fcd841' : '#dee2e6'); ?>;"></div>
 
                 <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold"
                     style="width:32px;height:32px;
-                     color: {{ $current_step >= 4 ? '#111' : '#666' }};
-                     background: {{ $current_step >= 4 ? '#fcd841' : '#dee2e6' }};">
+                     color: <?php echo e($current_step >= 4 ? '#111' : '#666'); ?>;
+                     background: <?php echo e($current_step >= 4 ? '#fcd841' : '#dee2e6'); ?>;">
                     4
                 </div>
 
@@ -58,7 +58,7 @@
 
             <div class="card-body px-4 px-lg-5 pb-4" style="line-height:1.75;">
 
-                {{-- Título --}}
+                
                 <div class="text-center mb-4">
                     <h4 class="fw-bold text-uppercase mb-2" style="color:#01498d;">
                         Formulario de Registro Estudiantil
@@ -70,8 +70,8 @@
                 </div>
 
 
-                {{-- PASO 1 --}}
-                @if($current_step == 1)
+                
+                <?php if($current_step == 1): ?>
 
                 <h5 class="text-center fw-bold mb-4" style="color:#01498d;">
                     Instrucciones Generales
@@ -130,12 +130,12 @@
 
                 </div>
 
-                @endif
+                <?php endif; ?>
 
 
 
-                {{-- PASO 2 --}}
-                @if($current_step == 2)
+                
+                <?php if($current_step == 2): ?>
 
                 <h5 class="fw-bold mb-4" style="color:#01498d;">
                     Información Personal
@@ -154,9 +154,16 @@
                             placeholder="Ingrese su identificación"
                             style="border-color:#01498d;">
 
-                        @error('ide')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        <?php $__errorArgs = ['ide'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <small class="text-danger"><?php echo e($message); ?></small>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
 
@@ -171,9 +178,16 @@
                             placeholder="Ingrese su nombre"
                             style="border-color:#01498d;">
 
-                        @error('name')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <small class="text-danger"><?php echo e($message); ?></small>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
 
@@ -188,9 +202,16 @@
                             placeholder="Ingrese sus apellidos"
                             style="border-color:#01498d;">
 
-                        @error('lastname')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        <?php $__errorArgs = ['lastname'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <small class="text-danger"><?php echo e($message); ?></small>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
 
@@ -205,9 +226,16 @@
                             placeholder="Ingrese su correo activo"
                             style="border-color:#01498d;">
 
-                        @error('email')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <small class="text-danger"><?php echo e($message); ?></small>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
 
@@ -222,9 +250,16 @@
                                 placeholder="Ingrese teléfono">
                         </div>
 
-                        @error('mobile')
-                        <small class="text-danger d-block">{{ $message }}</small>
-                        @enderror
+                        <?php $__errorArgs = ['mobile'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <small class="text-danger d-block"><?php echo e($message); ?></small>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
                     <div class="col-md-6">
@@ -266,17 +301,24 @@
                             </option>
                         </select>
 
-                        @error('career')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        <?php $__errorArgs = ['career'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <small class="text-danger"><?php echo e($message); ?></small>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
                 </div>
 
-                @endif
+                <?php endif; ?>
 
-                {{-- PASO 3 --}}
-                @if($current_step == 3)
+                
+                <?php if($current_step == 3): ?>
 
                 <h5 class="fw-bold mb-4" style="color:#01498d;">
                     Contactos de Emergencia
@@ -292,7 +334,7 @@
                 </div>
 
 
-                {{-- CONTACTO PRINCIPAL --}}
+                
                 <div class="card border-0 shadow-sm rounded-4 mb-4">
 
                     <div class="card-header border-0 rounded-top-4 text-white fw-bold"
@@ -314,9 +356,16 @@
                                     class="form-control rounded-3"
                                     placeholder="Ingrese nombre completo">
 
-                                @error('contact1_name')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <?php $__errorArgs = ['contact1_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="text-danger"><?php echo e($message); ?></small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 
@@ -336,9 +385,16 @@
                                     <option value="Otro">Otro</option>
                                 </select>
 
-                                @error('contact1_relation')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <?php $__errorArgs = ['contact1_relation'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="text-danger"><?php echo e($message); ?></small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 
@@ -351,9 +407,16 @@
                                         class="form-control rounded-3"
                                         placeholder="Ingrese teléfono">
                                 </div>
-                                @error('contact1_phone')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <?php $__errorArgs = ['contact1_phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="text-danger"><?php echo e($message); ?></small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
@@ -362,7 +425,7 @@
 
 
 
-                {{-- CONTACTO SECUNDARIO --}}
+                
                 <div class="card border-0 shadow-sm rounded-4 mb-4">
 
                     <div class="card-header border-0 rounded-top-4 fw-bold"
@@ -384,9 +447,16 @@
                                     class="form-control rounded-3"
                                     placeholder="Ingrese nombre completo">
 
-                                @error('contact2_name')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <?php $__errorArgs = ['contact2_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="text-danger"><?php echo e($message); ?></small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 
@@ -406,9 +476,16 @@
                                     <option value="Otro">Otro</option>
                                 </select>
 
-                                @error('contact2_relation')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <?php $__errorArgs = ['contact2_relation'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="text-danger"><?php echo e($message); ?></small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
 
@@ -421,9 +498,16 @@
                                         class="form-control rounded-3"
                                         placeholder="Ingrese teléfono">
                                 </div>
-                                @error('contact2_phone')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <?php $__errorArgs = ['contact2_phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="text-danger"><?php echo e($message); ?></small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                         </div>
@@ -431,10 +515,10 @@
                     </div>
                 </div>
 
-                @endif
+                <?php endif; ?>
 
-                {{-- PASO 4 --}}
-                @if($current_step == 4)
+                
+                <?php if($current_step == 4): ?>
 
                 <h5 class="fw-bold mb-4" style="color:#01498d;">
                     Confirmar Información
@@ -450,7 +534,7 @@
 
                         <tbody>
 
-                            {{-- Datos personales --}}
+                            
                             <tr class="table-light">
                                 <th colspan="2" class="fw-bold" style="color:#01498d;">
                                     Información Personal
@@ -459,35 +543,35 @@
 
                             <tr>
                                 <th style="width:35%;color:#01498d;">Identificación</th>
-                                <td>{{ $ide }}</td>
+                                <td><?php echo e($ide); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Nombre</th>
-                                <td>{{ $name }}</td>
+                                <td><?php echo e($name); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Apellidos</th>
-                                <td>{{ $lastname }}</td>
+                                <td><?php echo e($lastname); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Correo</th>
-                                <td>{{ $email }}</td>
+                                <td><?php echo e($email); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Teléfono</th>
-                                <td>{{ $mobile }}</td>
+                                <td><?php echo e($mobile); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#01498d;">Carrera</th>
-                                <td>{{ $career }}</td>
+                                <td><?php echo e($career); ?></td>
                             </tr>
 
-                            {{-- Contactos de emergencia --}}
+                            
                             <tr class="table-light">
                                 <th colspan="2" class="fw-bold" style="color:#42ab34;">
                                     Contactos de Emergencia
@@ -496,22 +580,22 @@
 
                             <tr>
                                 <th style="color:#42ab34;">Contacto #1</th>
-                                <td>{{ $contact1_name }} - {{ $contact1_phone }}</td>
+                                <td><?php echo e($contact1_name); ?> - <?php echo e($contact1_phone); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#42ab34;">Parentesco</th>
-                                <td>{{ $contact1_relation }}</td>
+                                <td><?php echo e($contact1_relation); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#42ab34;">Contacto #2</th>
-                                <td>{{ $contact2_name }} - {{ $contact2_phone }}</td>
+                                <td><?php echo e($contact2_name); ?> - <?php echo e($contact2_phone); ?></td>
                             </tr>
 
                             <tr>
                                 <th style="color:#42ab34;">Parentesco</th>
-                                <td>{{ $contact2_relation }}</td>
+                                <td><?php echo e($contact2_relation); ?></td>
                             </tr>
 
                         </tbody>
@@ -526,49 +610,49 @@
                     </small>
                 </div>
 
-                @endif
+                <?php endif; ?>
 
 
 
-                {{-- ACCIONES --}}
+                
                 <hr class="my-4" style="opacity:.12;">
 
-                <div class="d-flex {{ $current_step == 1 ? 'justify-content-end' : 'justify-content-between' }}">
+                <div class="d-flex <?php echo e($current_step == 1 ? 'justify-content-end' : 'justify-content-between'); ?>">
 
-                    @if($current_step >= 2)
+                    <?php if($current_step >= 2): ?>
                     <button type="button"
                         wire:click="decreaseStep"
                         class="btn px-4 text-white rounded-3"
                         style="background:#01498d;">
                         Atrás
                     </button>
-                    @endif
+                    <?php endif; ?>
 
 
-                    @if($current_step == 4)
+                    <?php if($current_step == 4): ?>
                     <button type="submit"
                         class="btn px-5 fw-bold rounded-3"
                         style="background:#42ab34;color:#fff;">
                         Enviar
                     </button>
-                    @endif
+                    <?php endif; ?>
 
 
-                    @if($current_step < 4)
+                    <?php if($current_step < 4): ?>
                         <button type="button"
                         id="btn-next"
 
-                        @if($current_step==1 && $accepts_terms=='no' )
+                        <?php if($current_step==1 && $accepts_terms=='no' ): ?>
                         disabled
-                        @endif
+                        <?php endif; ?>
 
                         class="btn px-5 fw-bold rounded-3
-                        {{ $current_step == 1 && $accepts_terms == 'no' ? 'btn-secondary' : '' }}"
+                        <?php echo e($current_step == 1 && $accepts_terms == 'no' ? 'btn-secondary' : ''); ?>"
 
-                        style="{{ $current_step == 1 && $accepts_terms == 'no' ? '' : 'background:#42ab34;color:#fff;' }}">
+                        style="<?php echo e($current_step == 1 && $accepts_terms == 'no' ? '' : 'background:#42ab34;color:#fff;'); ?>">
                         Siguiente
                         </button>
-                        @endif
+                        <?php endif; ?>
                 </div>
 
             </div>
@@ -580,10 +664,10 @@
 <div class="text-center mt-4">
 
     <small class="text-muted d-block">
-        © ETAI {{ date('Y') }} · Formulario Oficial
+        © ETAI <?php echo e(date('Y')); ?> · Formulario Oficial
     </small>
 
-    <a href="{{ route('login') }}"
+    <a href="<?php echo e(route('login')); ?>"
         class="text-decoration-none small fw-semibold"
         style="color:#01498d;">
         Acceso Administrativo
@@ -595,7 +679,7 @@
 
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 
@@ -674,4 +758,4 @@
         }, 50);
     });
 </script>
-@endpush
+<?php $__env->stopPush(); ?><?php /**PATH C:\laragon\www\formulario-etai\formulario-etai\resources\views/livewire/public/enrollment-form/v1/student-form.blade.php ENDPATH**/ ?>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es-ES" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo e(asset( 'images/favicons/apple-touch-icon.png' )); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset( 'images/favicons/favicon-32x32.png' )); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(asset( 'images/favicons/favicon-16x16.png' )); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset( 'images/favicons/favicon.ico' )); ?>">
+    <link rel="manifest" href="<?php echo e(asset( 'images/favicons/manifest.json' )); ?>">
+    <meta name="msapplication-TileImage" content="<?php echo e(asset( 'images/favicons/mstile-150x150.png' )); ?>">
+    <meta name="theme-color" content="#ffffff">
+    <script src="<?php echo e(asset( 'js/config.js' )); ?>"></script>
+    <script src="<?php echo e(asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.js' )); ?>"></script>
+
+    <!-- Banderas -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+
+    <!-- Stylesheets-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <link href="<?php echo e(asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.css' )); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset( 'css/theme.min.css' )); ?>" rel="stylesheet" id="style-default">
+    <link rel="stylesheet" href="<?php echo e(asset('css/ivetc.css')); ?>">
+
+    <!--    Document Title-->
+    <title>PRE-REGISTRO | ETAI</title>
+
+    
+    <?php echo \Livewire\Livewire::styles(); ?>
+
+
+</head>
+
+<body>
+
+    <?php /**PATH C:\laragon\www\formulario-etai\formulario-etai\resources\views/layout/sections/public-head.blade.php ENDPATH**/ ?>
