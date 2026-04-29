@@ -17,6 +17,10 @@
     <script src="{{ asset( 'js/config.js' ) }}"></script>
     <script src="{{ asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.js' ) }}"></script>
 
+    <!-- Banderas -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+
     <!-- Stylesheets-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
@@ -34,4 +38,4 @@
 
 <body>
 
-{{--@include('layout.sections.private-preloader')--}}
+    {{--@include('layout.sections.private-preloader')--}}

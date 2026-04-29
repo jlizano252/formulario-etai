@@ -12,7 +12,7 @@
 <!-- <script src="{{ asset( 'js/global/preloader.js' ) }}/"></script> -->
 
 {{-- Javascript added by page --}}
-@yield('scripts')
+@stack('scripts')
 
 </body>
 
