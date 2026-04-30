@@ -7,30 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset( 'images/favicons/apple-touch-icon.png' ) }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset( 'images/favicons/favicon-32x32.png' ) }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( 'images/favicons/favicon-16x16.png' ) }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset( 'images/favicons/favicon.ico' ) }}">
-    <link rel="manifest" href="{{ asset( 'images/favicons/manifest.json' ) }}">
-    <meta name="msapplication-TileImage" content="{{ asset( 'images/favicons/mstile-150x150.png' ) }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo e(asset( 'images/favicons/apple-touch-icon.png' )); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset( 'images/favicons/favicon-32x32.png' )); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(asset( 'images/favicons/favicon-16x16.png' )); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset( 'images/favicons/favicon.ico' )); ?>">
+    <link rel="manifest" href="<?php echo e(asset( 'images/favicons/manifest.json' )); ?>">
+    <meta name="msapplication-TileImage" content="<?php echo e(asset( 'images/favicons/mstile-150x150.png' )); ?>">
     <meta name="theme-color" content="#ffffff">
-    <script src="{{ asset( 'js/config.js' ) }}"></script>
-    <script src="{{ asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.js' ) }}"></script>
+    <script src="<?php echo e(asset( 'js/config.js' )); ?>"></script>
+    <script src="<?php echo e(asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.js' )); ?>"></script>
 
     <!-- Stylesheets-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
-    <link href="{{ asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( 'css/theme.min.css' ) }}" rel="stylesheet" id="style-default">
-    <link rel="stylesheet" href="{{ asset('css/ivetc.css') }}">
+    <link href="<?php echo e(asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.css' )); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset( 'css/theme.min.css' )); ?>" rel="stylesheet" id="style-default">
+    <link rel="stylesheet" href="<?php echo e(asset('css/ivetc.css')); ?>">
     
     <!--    Document Title-->
-    <title>{{ $pageTitle ?? 'FormETAI | Admin' }}</title>
+    <title><?php echo e($pageTitle ?? 'FormETAI | Admin'); ?></title>
 
-    {{-- Livewire --}}
-    @livewireStyles
+    
+    <?php echo \Livewire\Livewire::styles(); ?>
 
-    {{-- Modal Animations --}}
+
+    
     <style>
         @keyframes backdropIn {
             from {
@@ -111,4 +112,4 @@
 
 <body>
 
-    @include('layout.sections.private-preloader')
+    <?php echo $__env->make('layout.sections.private-preloader', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\formulario-etai\resources\views/layout/sections/private-head.blade.php ENDPATH**/ ?>

@@ -15107,19 +15107,96 @@ body {
 }
 
 /* Azul */
-.bg-etc-blue { background-color: #01498d; }
-.bg-etc-blue:hover { background-color: #013a70 !important; }
-.text-etc-blue { color: #01498d; }
-.border-etc-blue { border-color: #01498d !important; }
+.bg-etc-blue {
+    background-color: #01498d;
+}
+
+.bg-etc-blue:hover {
+    background-color: #013a70 !important;
+}
+
+.text-etc-blue {
+    color: #01498d;
+}
+
+.border-etc-blue {
+    border-color: #01498d !important;
+}
 
 /* Verde */
-.bg-etc-green { background-color: #42ab34; }
-.bg-etc-green:hover { background-color: #328a27 !important; }
-.text-etc-green { color: #42ab34; }
-.border-etc-green { border-color: #42ab34 !important; }
+.bg-etc-green {
+    background-color: #42ab34;
+}
+
+.bg-etc-green:hover {
+    background-color: #328a27 !important;
+}
+
+.text-etc-green {
+    color: #42ab34;
+}
+
+.border-etc-green {
+    border-color: #42ab34 !important;
+}
 
 /* Amarillo */
-.bg-etc-yellow { background-color: #fcd841; }
-.bg-etc-yellow:hover { background-color: #e6c22a !important; }
-.text-etc-yellow { color: #fcd841; }
-.border-etc-yellow { border-color: #fcd841 !important; }
+.bg-etc-yellow {
+    background-color: #fcd841;
+}
+
+.bg-etc-yellow:hover {
+    background-color: #e6c22a !important;
+}
+
+.text-etc-yellow {
+    color: #fcd841;
+}
+
+.border-etc-yellow {
+    border-color: #fcd841 !important;
+}
+
+.student-modal .modal-header{
+    background:#f4f6f8 !important;
+    border-bottom:1px solid #eef1f4 !important;
+}
+
+.student-modal .modal-body{
+    background:#ffffff;
+}
+
+.student-modal .modal-footer{
+    background:#f8f9fa;
+    border-top:1px solid #eef1f4;
+}
+
+.user-profile-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+}
+
+.user-slide-info{
+    max-width:0;
+    opacity:0;
+    overflow:hidden;
+    white-space:nowrap;
+    transform:translateX(20px);
+    transition:all .35s ease;
+}
+
+.user-profile-box:hover .user-slide-info{
+    max-width:230px;
+    opacity:1;
+    transform:translateX(0);
+}
+
+.user-avatar-box img{
+    transition:transform .25s ease;
+}
+
+.user-profile-box:hover .user-avatar-box img{
+    transform:scale(1.05);
+}
