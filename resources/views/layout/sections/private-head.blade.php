@@ -23,7 +23,7 @@
     <link href="{{ asset( 'vendors/overlayscrollbars/OverlayScrollbars.min.css' ) }}" rel="stylesheet">
     <link href="{{ asset( 'css/theme.min.css' ) }}" rel="stylesheet" id="style-default">
     <link rel="stylesheet" href="{{ asset('css/ivetc.css') }}">
-    
+
     <!--    Document Title-->
     <title>{{ $pageTitle ?? 'FormETAI | Admin' }}</title>
 
