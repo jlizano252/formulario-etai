@@ -37,23 +37,19 @@
                                     placeholder="Password">
                             </div>
 
-                            <div class="mb-3">
-                                <button class="btn premium-btn w-100" type="submit">
-                                    Log in
-                                </button>
-                            </div>
+                            <button class="btn premium-btn w-100" type="submit" id="login-btn">
+                                <span id="btn-text">Log in</span>
+                                <span id="btn-spinner" class="d-none">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                    Ingresando...
+                                </span>
+                            </button>
 
-                            @error('email')
+                            @if ($errors->has('email') || $errors->has('password'))
                             <div class="text-danger small text-center mt-2">
                                 Error de autenticación!!!
                             </div>
-                            @enderror
-
-                            @error('password')
-                            <div class="text-danger small text-center mt-2">
-                                Error de autenticación!!!
-                            </div>
-                            @enderror
+                            @endif
                         </form>
 
                         <div class="text-center mt-4 footer-note">
@@ -68,5 +64,11 @@
 
     </div>
 </main>
-
+<script>
+    document.querySelector('form').addEventListener('submit', function() {
+        document.getElementById('btn-text').classList.add('d-none');
+        document.getElementById('btn-spinner').classList.remove('d-none');
+        document.getElementById('login-btn').disabled = true;
+    });
+</script>
 @include('layout.sections.private-foot')

@@ -9,6 +9,27 @@
     }
 </style>
 
+{{-- Overlay Cerrando Sesión --}}
+<div id="logout-overlay"
+    style="display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#01498d,#0d63ba);
+           flex-direction:column;justify-content:center;align-items:center;gap:1.5rem;">
+
+    <img src="{{ asset('images/ivetc-brand-footer.png') }}"
+        style="width:160px;opacity:.95;"
+        alt="Logo">
+
+    <div class="spinner-border text-white"
+        style="width:3rem;height:3rem;"
+        role="status">
+    </div>
+
+    <div class="text-white text-center">
+        <div class="fw-bold fs-5">Cerrando sesión</div>
+        <small style="opacity:.75;">Por favor espere...</small>
+    </div>
+
+</div>
+
 <main class="main admin-layout" id="top">
 
     <div class="container py-3" data-layout="container">
@@ -113,12 +134,13 @@
                             <div class="px-4 py-3">
 
                                 <div class="small text-muted mb-3">
-                                    Documento:
+                                    Identificación:
                                     {{ \Illuminate\Support\Facades\Auth::user()->ide }}
                                 </div>
 
                                 <form action="{{ route('logout') }}"
-                                    method="post">
+                                    method="post"
+                                    id="logout-form">
                                     @csrf
 
                                     <button class="btn w-100 rounded-4 fw-semibold text-white"
@@ -151,6 +173,12 @@
         </div>
     </div>
 </main>
+
+<script>
+    document.getElementById('logout-form').addEventListener('submit', function() {
+        document.getElementById('logout-overlay').style.display = 'flex';
+    });
+</script>
 
 <!-- ===============================================-->
 <!-- End Main Content -->
