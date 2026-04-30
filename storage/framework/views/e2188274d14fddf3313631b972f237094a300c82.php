@@ -1,10 +1,10 @@
 <div>
     <div class="card border-0 rounded-4 shadow-lg overflow-hidden bg-white">
 
-        {{-- Barra superior institucional --}}
+        
         <div style="height:6px;background:linear-gradient(90deg,#01498d,#42ab34,#fcd841);"></div>
 
-        {{-- Header --}}
+        
         <div class="card-body px-4 py-4">
 
             <div class="row g-3 align-items-center">
@@ -25,7 +25,8 @@
                         <div class="text-start">
                             <small class="text-muted d-block">Total registrados</small>
                             <span class="fw-bold fs-5" style="color:#01498d;">
-                                {{ $students->total() }}
+                                <?php echo e($students->total()); ?>
+
                             </span>
                         </div>
 
@@ -39,7 +40,7 @@
 
             </div>
 
-            {{-- Busqueda / acciones --}}
+            
             <div class="row g-3 mt-3">
 
                 <div class="col-lg-6">
@@ -100,7 +101,7 @@
 
 
 
-        {{-- Tabla --}}
+        
         <div class="table-responsive">
 
             <table class="table table-hover align-middle mb-0">
@@ -120,24 +121,25 @@
 
                 <tbody>
 
-                    @forelse($students as $student)
+                    <?php $__empty_1 = true; $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
                     <tr style="transition:.2s;">
 
                         <td class="ps-4">
 
                             <button
-                                wire:click="openModal({{ $student->id }})"
+                                wire:click="openModal(<?php echo e($student->id); ?>)"
                                 wire:loading.class="opacity-50"
                                 wire:target="openModal"
                                 class="btn btn-link text-decoration-none p-0 fw-semibold"
                                 style="color:#01498d;">
 
-                                <span wire:loading.remove wire:target="openModal({{ $student->id }})">
-                                    {{ ucfirst($student->name . ' ' . $student->lastname) }}
+                                <span wire:loading.remove wire:target="openModal(<?php echo e($student->id); ?>)">
+                                    <?php echo e(ucfirst($student->name . ' ' . $student->lastname)); ?>
+
                                 </span>
 
-                                <span wire:loading wire:target="openModal({{ $student->id }})">
+                                <span wire:loading wire:target="openModal(<?php echo e($student->id); ?>)">
                                     <span class="spinner-border spinner-border-sm me-1"></span>
                                     Cargando...
                                 </span>
@@ -146,26 +148,28 @@
 
                         </td>
 
-                        <td>{{ $student->ide }}</td>
+                        <td><?php echo e($student->ide); ?></td>
 
                         <td>
                             <span class="badge rounded-pill px-3 py-2"
                                 style="background:#eef4ff;color:#01498d;">
-                                {{ $student->career }}
+                                <?php echo e($student->career); ?>
+
                             </span>
                         </td>
 
-                        <td>{{ $student->email }}</td>
+                        <td><?php echo e($student->email); ?></td>
 
-                        <td class="text-nowrap">{{ $student->mobile_formatted }}</td>
+                        <td class="text-nowrap"><?php echo e($student->mobile_formatted); ?></td>
 
                         <td class="pe-4 text-muted">
-                            {{ \Carbon\Carbon::parse($student->created_at)->format('d/m/Y') }}
+                            <?php echo e(\Carbon\Carbon::parse($student->created_at)->format('d/m/Y')); ?>
+
                         </td>
 
                     </tr>
 
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                     <tr>
                         <td colspan="6" class="text-center py-5">
@@ -185,7 +189,7 @@
                         </td>
                     </tr>
 
-                    @endforelse
+                    <?php endif; ?>
 
                 </tbody>
 
@@ -195,8 +199,8 @@
 
 
 
-        {{-- Footer --}}
-        @if($students->hasPages())
+        
+        <?php if($students->hasPages()): ?>
         <div class="card-footer bg-white border-0 px-4 py-3">
 
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
@@ -205,17 +209,18 @@
                     Mostrando resultados paginados
                 </small>
 
-                {{ $students->links() }}
+                <?php echo e($students->links()); ?>
+
 
             </div>
 
         </div>
-        @endif
+        <?php endif; ?>
 
     </div>
 
-    {{-- MODAL PREMIUM --}}
-    @if($showModal && $selectedStudent)
+    
+    <?php if($showModal && $selectedStudent): ?>
 
     <div
         x-data="{
@@ -265,16 +270,17 @@
                             style="width:85px;height:85px;background:#f8f9fa;">
 
                             <img
-                                src="{{ asset('images/patitos.png') }}"
+                                src="<?php echo e(asset('images/patitos.png')); ?>"
                                 class="w-100 h-100"
                                 style="object-fit:cover;"
                                 alt="Avatar Patito">
 
                         </div>
                         <h5 class="fw-bold mt-3 mb-1">
-                            {{ ucfirst($selectedStudent->name . ' ' . $selectedStudent->lastname) }}
+                            <?php echo e(ucfirst($selectedStudent->name . ' ' . $selectedStudent->lastname)); ?>
+
                         </h5>
-                        <small class="text-muted">{{ $selectedStudent->career }}</small>
+                        <small class="text-muted"><?php echo e($selectedStudent->career); ?></small>
                     </div>
 
                     <div class="row g-4">
@@ -283,12 +289,13 @@
                                 <h6 class="fw-bold mb-3" style="color:#01498d;">
                                     Datos Personales
                                 </h6>
-                                <p class="mb-2"><strong>ID:</strong> {{ $selectedStudent->ide }}</p>
-                                <p class="mb-2"><strong>Correo:</strong> {{ $selectedStudent->email }}</p>
-                                <p class="mb-2"><strong>Carrera:</strong> {{ $selectedStudent->career }}</p>
-                                <p class="mb-2"><strong>Teléfono:</strong> {{ $selectedStudent->mobile_formatted }}</p>
+                                <p class="mb-2"><strong>ID:</strong> <?php echo e($selectedStudent->ide); ?></p>
+                                <p class="mb-2"><strong>Correo:</strong> <?php echo e($selectedStudent->email); ?></p>
+                                <p class="mb-2"><strong>Carrera:</strong> <?php echo e($selectedStudent->career); ?></p>
+                                <p class="mb-2"><strong>Teléfono:</strong> <?php echo e($selectedStudent->mobile_formatted); ?></p>
                                 <p class="mb-0"><strong>Registro:</strong>
-                                    {{ \Carbon\Carbon::parse($selectedStudent->created_at)->format('d/m/Y h:i A') }}
+                                    <?php echo e(\Carbon\Carbon::parse($selectedStudent->created_at)->format('d/m/Y h:i A')); ?>
+
                                 </p>
                             </div>
                         </div>
@@ -299,15 +306,17 @@
                                     Contactos de Emergencia
                                 </h6>
                                 <p class="mb-2">
-                                    <strong>#1:</strong> {{ $selectedStudent->emergency_name_1 }}
+                                    <strong>#1:</strong> <?php echo e($selectedStudent->emergency_name_1); ?>
+
                                     <br>
-                                    <small>Teléfono: {{ $selectedStudent->emergency_phone_1_formatted }}</small>
+                                    <small>Teléfono: <?php echo e($selectedStudent->emergency_phone_1_formatted); ?></small>
                                 </p>
                                 <hr>
                                 <p class="mb-0">
-                                    <strong>#2:</strong> {{ $selectedStudent->emergency_name_2 }}
+                                    <strong>#2:</strong> <?php echo e($selectedStudent->emergency_name_2); ?>
+
                                     <br>
-                                    <small>Teléfono: {{ $selectedStudent->emergency_phone_2_formatted }}</small>
+                                    <small>Teléfono: <?php echo e($selectedStudent->emergency_phone_2_formatted); ?></small>
                                 </p>
                             </div>
                         </div>
@@ -326,5 +335,5 @@
             </div>
         </div>
     </div>
-    @endif
-</div>
+    <?php endif; ?>
+</div><?php /**PATH C:\laragon\www\formulario-etai\resources\views/livewire/admin/dashboard/students-table.blade.php ENDPATH**/ ?>

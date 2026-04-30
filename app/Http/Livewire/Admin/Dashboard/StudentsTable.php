@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Dashboard;
 
 use App\Exports\RegisterExport;
+use App\Exports\ContactsExport;
 use App\Models\Student;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -27,12 +28,34 @@ class StudentsTable extends Component
         $this->resetPage();
     }
 
+    public bool $exporting = false;
+
     public function export()
     {
-        return Excel::download(
+        $this->exporting = true;
+
+        $file = Excel::download(
             new RegisterExport('students'),
             'Students-' . date('Y-m-d_H-i-s') . '.xlsx'
         );
+
+        $this->exporting = false;
+
+        return $file;
+    }
+
+    public function exportContacts()
+    {
+        $this->exporting = true;
+
+        $file = Excel::download(
+            new ContactsExport,
+            'Contactos-' . date('Y-m-d_H-i-s') . '.xlsx'
+        );
+
+        $this->exporting = false;
+
+        return $file;
     }
 
     public function openModal(int $studentId): void
@@ -52,9 +75,9 @@ class StudentsTable extends Component
         $students = Student::query()
             ->where(function ($q) {
                 $q->where('name',     'LIKE', '%' . $this->search . '%')
-                  ->orWhere('lastname', 'LIKE', '%' . $this->search . '%')
-                  ->orWhere('email',    'LIKE', '%' . $this->search . '%')
-                  ->orWhere('ide',      'LIKE', '%' . $this->search . '%');
+                    ->orWhere('lastname', 'LIKE', '%' . $this->search . '%')
+                    ->orWhere('email',    'LIKE', '%' . $this->search . '%')
+                    ->orWhere('ide',      'LIKE', '%' . $this->search . '%');
             })
             ->orderBy('created_at', 'desc')
             ->paginate(15);
