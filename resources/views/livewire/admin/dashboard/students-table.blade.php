@@ -260,17 +260,31 @@
 
                 <div class="modal-body px-4 pb-2">
 
+                    @php
+                    $careerIcon = match($selectedStudent->career) {
+                    'Ciencias Agropecuarias' => 'images/ciencias_agropecuarias.png',
+                    'Turismo Sostenible' => 'images/turismo_sostenible.png',
+                    'Gestion Empresarial' => 'images/gestion_empresarial.png',
+                    'Administracion de Empresas' => 'images/admin_empresas.png',
+                    'Desarrollo de Software' => 'images/desarrollo_software.png',
+                    'Administracion de Empresas (Virtual)' => 'images/admin_virtual.png',
+                    'Contabilidad y Finanzas' => 'images/contabilidad_finanzas.png',
+                    default => 'fa-user-graduate',
+                    };
+                    @endphp
+
+                    {{-- Contenedor del Icono --}}
                     <div class="text-center mb-4 modal-section-1">
                         <div class="mx-auto rounded-circle shadow overflow-hidden"
-                            style="width:85px;height:85px;background:#f8f9fa;">
+                            style="width:85px; height:85px; background:#f8f9fa; border: 3px solid #01498d;">
 
-                            <img
-                                src="{{ asset('images/patitos.png') }}"
+                            <img src="{{ asset($careerIcon) }}"
                                 class="w-100 h-100"
                                 style="object-fit:cover;"
-                                alt="Avatar Patito">
+                                alt="{{ $selectedStudent->career }}">
 
                         </div>
+
                         <h5 class="fw-bold mt-3 mb-1">
                             {{ ucfirst($selectedStudent->name . ' ' . $selectedStudent->lastname) }}
                         </h5>
