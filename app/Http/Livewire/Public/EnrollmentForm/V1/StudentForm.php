@@ -34,6 +34,29 @@ class StudentForm extends Component
     public string $contact2_relation  = '';
     public string $contact2_phone     = '';
 
+    protected function messages(): array
+    {
+        return [
+            'ide.required'             => 'El número de identificación es obligatorio.',
+            'ide.unique'               => 'Esta identificación ya está registrada.',
+            'name.required'            => 'El nombre es obligatorio.',
+            'lastname.required'        => 'Los apellidos son obligatorios.',
+            'email.required'           => 'El correo electrónico es obligatorio.',
+            'email.email'              => 'Ingrese un correo electrónico válido.',
+            'email.unique'             => 'Este correo ya está registrado.',
+            'mobile.required'          => 'El número de teléfono es obligatorio.',
+            'career.required'          => 'La carrera de interés es obligatoria.',
+            'contact1_name.required'   => 'El nombre es obligatorio.',
+            'contact1_relation.required' => 'El parentesco es obligatorio.',
+            'contact1_phone.required'  => 'El teléfono es obligatorio.',
+            'contact2_name.required'   => 'El nombre es obligatorio.',
+            'contact2_relation.required' => 'El parentesco es obligatorio.',
+            'contact2_phone.required'  => 'El teléfono es obligatorio.',
+            'identity_document.mimes'  => 'El documento debe ser JPG, PNG o PDF.',
+            'identity_document.max'    => 'El documento no puede superar los 5MB.',
+        ];
+    }
+
     // Paso 4 — Confirmación (solo lectura, sin campos extra por ahora)
 
     public function validateData(): void
@@ -148,6 +171,9 @@ class StudentForm extends Component
 
             'emergency_name_2'  => $this->contact2_name,
             'emergency_phone_2' => $this->contact2_phone,
+
+            'emergency_relation_1' => $this->contact1_relation,
+            'emergency_relation_2' => $this->contact2_relation,
         ];
 
         try {
