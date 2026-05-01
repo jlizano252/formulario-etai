@@ -105,6 +105,17 @@
         .modal-dialog-out {
             animation: modalOut 0.28s cubic-bezier(0.4, 0, 1, 1) forwards;
         }
+
+        body {
+            background-image:
+                radial-gradient(circle, rgba(200, 216, 232, 0.6) 1px, transparent 1px),
+                linear-gradient(135deg, #daeaf7 0%, #d9f0d3 50%, #fdf4cc 100%);
+            background-size: 24px 24px, cover;
+        }
+
+        .main.admin-layout {
+            background: transparent !important;
+        }
     </style>
 
 </head>

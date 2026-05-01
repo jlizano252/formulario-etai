@@ -17,8 +17,10 @@ class Student extends Model
         'mobile',
         'career',
         'emergency_name_1',
+        'emergency_relation_1',
         'emergency_phone_1',
         'emergency_name_2',
+        'emergency_relation_2',
         'emergency_phone_2',
     ];
 

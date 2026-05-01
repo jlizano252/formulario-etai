@@ -312,17 +312,41 @@
                                 <h6 class="fw-bold mb-3" style="color:#42ab34;">
                                     Contactos de Emergencia
                                 </h6>
-                                <p class="mb-2">
+
+                                <p class="mb-1">
                                     <strong>#1:</strong> {{ $selectedStudent->emergency_name_1 }}
-                                    <br>
-                                    <small>Teléfono: {{ $selectedStudent->emergency_phone_1_formatted }}</small>
                                 </p>
+                                <p class="mb-1">
+                                    <small class="text-muted">
+                                        <i class="fas fa-heart me-1" style="color:#42ab34;"></i>
+                                        {{ $selectedStudent->emergency_relation_1 }}
+                                    </small>
+                                </p>
+                                <p class="mb-2">
+                                    <small>
+                                        <i class="fas fa-phone-alt me-1" style="color:#01498d;"></i>
+                                        {{ $selectedStudent->emergency_phone_1_formatted }}
+                                    </small>
+                                </p>
+
                                 <hr>
-                                <p class="mb-0">
+
+                                <p class="mb-1">
                                     <strong>#2:</strong> {{ $selectedStudent->emergency_name_2 }}
-                                    <br>
-                                    <small>Teléfono: {{ $selectedStudent->emergency_phone_2_formatted }}</small>
                                 </p>
+                                <p class="mb-1">
+                                    <small class="text-muted">
+                                        <i class="fas fa-heart me-1" style="color:#42ab34;"></i>
+                                        {{ $selectedStudent->emergency_relation_2 }}
+                                    </small>
+                                </p>
+                                <p class="mb-0">
+                                    <small>
+                                        <i class="fas fa-phone-alt me-1" style="color:#01498d;"></i>
+                                        {{ $selectedStudent->emergency_phone_2_formatted }}
+                                    </small>
+                                </p>
+
                             </div>
                         </div>
                     </div>
