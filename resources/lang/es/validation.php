@@ -146,6 +146,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'ide'              => 'número de identificación',
+        'name'             => 'nombre',
+        'lastname'         => 'apellidos',
+        'email'            => 'correo electrónico',
+        'mobile'           => 'teléfono',
+        'career'           => 'carrera',
+        'contact1_name'    => 'nombre',
+        'contact1_relation' => 'parentesco',
+        'contact1_phone'   => 'teléfono',
+        'contact2_name'    => 'nombre',
+        'contact2_relation' => 'parentesco',
+        'contact2_phone'   => 'teléfono',
+    ],
 
 ];
