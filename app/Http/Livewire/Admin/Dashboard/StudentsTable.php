@@ -80,8 +80,13 @@ class StudentsTable extends Component
                     ->orWhere('ide',      'LIKE', '%' . $this->search . '%');
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->paginate(8);
 
         return view('livewire.admin.dashboard.students-table', compact('students'));
+    }
+    
+    public function updatedSearch(): void
+    {
+        // necesario para que wire:target lo reconozca
     }
 }

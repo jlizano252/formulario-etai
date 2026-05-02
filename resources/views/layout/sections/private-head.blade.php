@@ -173,6 +173,27 @@
         tbody tr:nth-child(10) {
             animation-delay: 0.30s;
         }
+
+        @keyframes barSlide {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .modal-bar-animated {
+            height: 6px;
+            background: linear-gradient(90deg, #01498d, #42ab34, #fcd841, #42ab34, #01498d);
+            background-size: 300% 300%;
+            animation: barSlide 2.5s ease infinite;
+        }
     </style>
 
 </head>

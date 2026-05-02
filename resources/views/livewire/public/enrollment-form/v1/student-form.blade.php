@@ -536,37 +536,26 @@
                 <div class="d-flex {{ $current_step == 1 ? 'justify-content-end' : 'justify-content-between' }}">
 
                     @if($current_step >= 2)
-                    <button type="button"
-                        wire:click="decreaseStep"
-                        class="btn px-4 text-white rounded-3"
-                        style="background:#01498d;">
-                        Atrás
+                    <button type="button" wire:click="decreaseStep"
+                        class="btn px-4 rounded-4 fw-semibold"
+                        style="background:#eef4ff;color:#01498d;border:1px solid #c7dcf7;">
+                        <i class="fas fa-arrow-left me-2"></i>Atrás
                     </button>
                     @endif
-
-
-                    @if($current_step == 4)
-                    <button type="submit"
-                        class="btn px-5 fw-bold rounded-3"
-                        style="background:#42ab34;color:#fff;">
-                        Enviar
-                    </button>
-                    @endif
-
 
                     @if($current_step < 4)
-                        <button type="button"
-                        id="btn-next"
-
-                        @if($current_step==1 && $accepts_terms=='no' )
-                        disabled
+                        <button type="button" id="btn-next"
+                        class="btn px-5 fw-bold rounded-4 text-white"
+                        style="background:linear-gradient(90deg,#01498d,#42ab34);">
+                        Siguiente <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
                         @endif
 
-                        class="btn px-5 fw-bold rounded-3
-                        {{ $current_step == 1 && $accepts_terms == 'no' ? 'btn-secondary' : '' }}"
-
-                        style="{{ $current_step == 1 && $accepts_terms == 'no' ? '' : 'background:#42ab34;color:#fff;' }}">
-                        Siguiente
+                        @if($current_step == 4)
+                        <button type="submit"
+                            class="btn px-5 fw-bold rounded-4 text-white"
+                            style="background:linear-gradient(90deg,#42ab34,#01498d);">
+                            <i class="fas fa-paper-plane me-2"></i>Enviar Registro
                         </button>
                         @endif
                 </div>
