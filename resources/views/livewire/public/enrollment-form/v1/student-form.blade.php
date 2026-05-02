@@ -141,429 +141,431 @@
                     Información Personal
                 </h5>
 
+                {{-- Sección: Identificación --}}
+                <div class="rounded-4 p-3 mb-3" style="background:#f8faff;border:0.5px solid #c7dcf7;">
+
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center"
+                            style="width:26px;height:26px;background:#01498d;color:#fff;font-size:.65rem;min-width:26px;">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <span class="fw-semibold" style="color:#01498d;font-size:.88rem;">Identificación</span>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Número de Identificación <span class="text-danger">*</span>
+                            </label>
+                            <input wire:model.defer="ide"
+                                type="text"
+                                class="form-control rounded-3"
+                                placeholder="Ej: 1-1234-5678"
+                                style="border-color:#01498d;">
+                            @error('ide')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{-- Sección: Datos Personales --}}
+            <div class="rounded-4 p-3 mb-3" style="background:#f8fff8;border:0.5px solid #b7e4c7;">
+
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="rounded-circle d-flex justify-content-center align-items-center"
+                        style="width:26px;height:26px;background:#42ab34;color:#fff;font-size:.65rem;min-width:26px;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="fw-semibold" style="color:#42ab34;font-size:.88rem;">Datos Personales</span>
+                </div>
+
                 <div class="row g-3">
 
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">
-                            Número de Identificación
+                            Nombre <span class="text-danger">*</span>
                         </label>
-
-                        <input wire:model.defer="ide"
-                            type="text"
-                            class="form-control rounded-3"
-                            placeholder="Ingrese su identificación"
-                            style="border-color:#01498d;">
-
-                        @error('ide')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">
-                            Nombre
-                        </label>
-
                         <input wire:model.defer="name"
                             type="text"
                             class="form-control rounded-3"
                             placeholder="Ingrese su nombre"
-                            style="border-color:#01498d;">
-
+                            style="border-color:#42ab34;">
                         @error('name')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 
-
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">
-                            Apellidos
+                            Apellidos <span class="text-danger">*</span>
                         </label>
-
                         <input wire:model.defer="lastname"
                             type="text"
                             class="form-control rounded-3"
                             placeholder="Ingrese sus apellidos"
-                            style="border-color:#01498d;">
-
+                            style="border-color:#42ab34;">
                         @error('lastname')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 
-
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">
-                            Correo Electrónico
+                            Correo Electrónico <span class="text-danger">*</span>
                         </label>
-
                         <input wire:model.defer="email"
                             type="email"
                             class="form-control rounded-3"
                             placeholder="Ingrese su correo activo"
-                            style="border-color:#01498d;">
-
+                            style="border-color:#42ab34;">
                         @error('email')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 
-
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Teléfono</label>
-
+                        <label class="form-label fw-semibold">
+                            Teléfono <span class="text-danger">*</span>
+                        </label>
                         <div wire:ignore>
-                            <input
-                                id="phone"
-                                type="tel"
+                            <input id="phone" type="tel"
                                 class="form-control rounded-3"
                                 placeholder="Ingrese teléfono">
                         </div>
-
                         @error('mobile')
                         <small class="text-danger d-block">{{ $message }}</small>
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">
-                            Carrera de interés
-                        </label>
-
-                        <select wire:model.defer="career"
-                            class="form-select rounded-3"
-                            style="border-color:#01498d;">
-
-                            <option value="">Seleccione una carrera</option>
-
-                            <option value="Ciencias Agropecuarias">
-                                Ciencias Agropecuarias
-                            </option>
-
-                            <option value="Turismo Sostenible">
-                                Turismo Sostenible
-                            </option>
-
-                            <option value="Gestion Empresarial">
-                                Gestión Empresarial
-                            </option>
-
-                            <option value="Administracion de Empresas Agropecuarias">
-                                Administración de Empresas Agropecuarias
-                            </option>
-
-                            <option value="Desarrollo de Software">
-                                Desarrollo de Software
-                            </option>
-
-                            <option value="Administracion de Empresas (Virtual)">
-                                Administración de Empresas (Virtual)
-                            </option>
-                            <option value="Contabilidad y Finanzas">
-                                Contabilidad y Finanzas
-                            </option>
-                        </select>
-
-                        @error('career')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                </div>
-
-                @endif
-
-                {{-- PASO 3 --}}
-                @if($current_step == 3)
-
-                <h5 class="fw-bold mb-4" style="color:#01498d;">
-                    Contactos de Emergencia
-                </h5>
-
-                <div class="alert border rounded-4 mb-4"
-                    style="background:#f8fafc;border-color:#dee2e6;color:#495057;">
-
-                    <strong>Importante:</strong><br>
-                    Debe registrar <strong>2 contactos de emergencia distintos</strong>.<br>
-                    Ninguno puede corresponder a la persona que realiza el pre-registro.
-
-                </div>
-
-
-                {{-- CONTACTO PRINCIPAL --}}
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
-
-                    <div class="card-header border-0 rounded-top-4 text-white fw-bold"
-                        style="background:#01498d;">
-                        Contacto Principal
-                    </div>
-
-                    <div class="card-body">
-
-                        <div class="row g-3">
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">
-                                    Nombre Completo
-                                </label>
-
-                                <input wire:model.defer="contact1_name"
-                                    type="text"
-                                    class="form-control rounded-3"
-                                    placeholder="Ingrese nombre completo">
-
-                                @error('contact1_name')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">
-                                    Parentesco
-                                </label>
-
-                                <select wire:model.defer="contact1_relation"
-                                    class="form-select rounded-3">
-                                    <option value="">Seleccione</option>
-                                    <option value="Madre">Madre</option>
-                                    <option value="Padre">Padre</option>
-                                    <option value="Hermano(a)">Hermano(a)</option>
-                                    <option value="Cónyuge">Cónyuge</option>
-                                    <option value="Encargado Legal">Encargado Legal</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-
-                                @error('contact1_relation')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Teléfono</label>
-                                <div wire:ignore>
-                                    <input
-                                        id="phone-contact1"
-                                        type="tel"
-                                        class="form-control rounded-3"
-                                        placeholder="Ingrese teléfono">
-                                </div>
-                                @error('contact1_phone')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                {{-- CONTACTO SECUNDARIO --}}
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
-
-                    <div class="card-header border-0 rounded-top-4 fw-bold"
-                        style="background:#42ab34;color:#fff;">
-                        Contacto Secundario
-                    </div>
-
-                    <div class="card-body">
-
-                        <div class="row g-3">
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">
-                                    Nombre Completo
-                                </label>
-
-                                <input wire:model.defer="contact2_name"
-                                    type="text"
-                                    class="form-control rounded-3"
-                                    placeholder="Ingrese nombre completo">
-
-                                @error('contact2_name')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">
-                                    Parentesco
-                                </label>
-
-                                <select wire:model.defer="contact2_relation"
-                                    class="form-select rounded-3">
-                                    <option value="">Seleccione</option>
-                                    <option value="Madre">Madre</option>
-                                    <option value="Padre">Padre</option>
-                                    <option value="Hermano(a)">Hermano(a)</option>
-                                    <option value="Cónyuge">Cónyuge</option>
-                                    <option value="Encargado Legal">Encargado Legal</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-
-                                @error('contact2_relation')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Teléfono</label>
-                                <div wire:ignore>
-                                    <input
-                                        id="phone-contact2"
-                                        type="tel"
-                                        class="form-control rounded-3"
-                                        placeholder="Ingrese teléfono">
-                                </div>
-                                @error('contact2_phone')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                @endif
-
-                {{-- PASO 4 --}}
-                @if($current_step == 4)
-
-                <h5 class="fw-bold mb-4" style="color:#01498d;">
-                    Confirmar Información
-                </h5>
-
-                <p class="text-secondary">
-                    Revise cuidadosamente sus datos antes de enviar el formulario.
-                </p>
-
-                <div class="table-responsive">
-
-                    <table class="table align-middle border rounded-4 overflow-hidden bg-white">
-
-                        <tbody>
-
-                            {{-- Datos personales --}}
-                            <tr class="table-light">
-                                <th colspan="2" class="fw-bold" style="color:#01498d;">
-                                    Información Personal
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th style="width:35%;color:#01498d;">Identificación</th>
-                                <td>{{ $ide }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#01498d;">Nombre</th>
-                                <td>{{ $name }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#01498d;">Apellidos</th>
-                                <td>{{ $lastname }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#01498d;">Correo</th>
-                                <td>{{ $email }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#01498d;">Teléfono</th>
-                                <td>{{ $mobile }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#01498d;">Carrera</th>
-                                <td>{{ $career }}</td>
-                            </tr>
-
-                            {{-- Contactos de emergencia --}}
-                            <tr class="table-light">
-                                <th colspan="2" class="fw-bold" style="color:#42ab34;">
-                                    Contactos de Emergencia
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#42ab34;">Contacto #1</th>
-                                <td>{{ $contact1_name }} - {{ $contact1_phone }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#42ab34;">Parentesco</th>
-                                <td>{{ $contact1_relation }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#42ab34;">Contacto #2</th>
-                                <td>{{ $contact2_name }} - {{ $contact2_phone }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="color:#42ab34;">Parentesco</th>
-                                <td>{{ $contact2_relation }}</td>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-                <div class="alert alert-light border mt-3 mb-0">
-                    <small class="text-muted">
-                        Al presionar <strong>Enviar</strong>, confirma que toda la información suministrada es verídica y correcta.
-                    </small>
-                </div>
-
-                @endif
-
-
-
-                {{-- ACCIONES --}}
-                <hr class="my-4" style="opacity:.12;">
-
-                <div class="d-flex {{ $current_step == 1 ? 'justify-content-end' : 'justify-content-between' }}">
-
-                    @if($current_step >= 2)
-                    <button type="button" wire:click="decreaseStep"
-                        class="btn px-4 rounded-4 fw-semibold"
-                        style="background:#eef4ff;color:#01498d;border:1px solid #c7dcf7;">
-                        <i class="fas fa-arrow-left me-2"></i>Atrás
-                    </button>
-                    @endif
-
-                    @if($current_step < 4)
-                        <button type="button" id="btn-next"
-                        class="btn px-5 fw-bold rounded-4 text-white"
-                        style="background:linear-gradient(90deg,#01498d,#42ab34);">
-                        Siguiente <i class="fas fa-arrow-right ms-2"></i>
-                        </button>
-                        @endif
-
-                        @if($current_step == 4)
-                        <button type="submit"
-                            class="btn px-5 fw-bold rounded-4 text-white"
-                            style="background:linear-gradient(90deg,#42ab34,#01498d);">
-                            <i class="fas fa-paper-plane me-2"></i>Enviar Registro
-                        </button>
-                        @endif
                 </div>
 
             </div>
 
-        </form>
+            {{-- Sección: Carrera --}}
+            <div class="rounded-4 p-3" style="background:#fffbe6;border:0.5px solid #ffe082;">
+
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="rounded-circle d-flex justify-content-center align-items-center"
+                        style="width:26px;height:26px;background:#fcd841;color:#333;font-size:.65rem;min-width:26px;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="fw-semibold" style="color:#d4a800;font-size:.88rem;">Carrera de Interés</span>
+                </div>
+
+                <select wire:model.defer="career"
+                    class="form-select rounded-3"
+                    style="border-color:#fcd841;">
+                    <option value="">Seleccione una carrera</option>
+                    <option value="Ciencias Agropecuarias">Ciencias Agropecuarias</option>
+                    <option value="Turismo Sostenible">Turismo Sostenible</option>
+                    <option value="Gestion Empresarial">Gestión Empresarial</option>
+                    <option value="Administracion de Empresas Agropecuarias">Administración de Empresas Agropecuarias</option>
+                    <option value="Desarrollo de Software">Desarrollo de Software</option>
+                    <option value="Administracion de Empresas (Virtual)">Administración de Empresas (Virtual)</option>
+                    <option value="Contabilidad y Finanzas">Contabilidad y Finanzas</option>
+                </select>
+
+                @error('career')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
+            @endif
+
+            {{-- PASO 3 --}}
+            @if($current_step == 3)
+
+            <h5 class="fw-bold mb-4" style="color:#01498d;">
+                Contactos de Emergencia
+            </h5>
+
+            <div class="alert border rounded-4 mb-4"
+                style="background:#f8fafc;border-color:#dee2e6;color:#495057;">
+
+                <strong>Importante:</strong><br>
+                Debe registrar <strong>2 contactos de emergencia distintos</strong>.<br>
+                Ninguno puede corresponder a la persona que realiza el pre-registro.
+
+            </div>
+
+
+            {{-- CONTACTO PRINCIPAL --}}
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+                <div class="card-header border-0 rounded-top-4 text-white fw-bold"
+                    style="background:#01498d;">
+                    Contacto Principal
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Nombre Completo
+                            </label>
+
+                            <input wire:model.defer="contact1_name"
+                                type="text"
+                                class="form-control rounded-3"
+                                placeholder="Ingrese nombre completo">
+
+                            @error('contact1_name')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Parentesco
+                            </label>
+
+                            <select wire:model.defer="contact1_relation"
+                                class="form-select rounded-3">
+                                <option value="">Seleccione</option>
+                                <option value="Madre">Madre</option>
+                                <option value="Padre">Padre</option>
+                                <option value="Hermano(a)">Hermano(a)</option>
+                                <option value="Cónyuge">Cónyuge</option>
+                                <option value="Encargado Legal">Encargado Legal</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+
+                            @error('contact1_relation')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Teléfono</label>
+                            <div wire:ignore>
+                                <input
+                                    id="phone-contact1"
+                                    type="tel"
+                                    class="form-control rounded-3"
+                                    placeholder="Ingrese teléfono">
+                            </div>
+                            @error('contact1_phone')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            {{-- CONTACTO SECUNDARIO --}}
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+                <div class="card-header border-0 rounded-top-4 fw-bold"
+                    style="background:#42ab34;color:#fff;">
+                    Contacto Secundario
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Nombre Completo
+                            </label>
+
+                            <input wire:model.defer="contact2_name"
+                                type="text"
+                                class="form-control rounded-3"
+                                placeholder="Ingrese nombre completo">
+
+                            @error('contact2_name')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Parentesco
+                            </label>
+
+                            <select wire:model.defer="contact2_relation"
+                                class="form-select rounded-3">
+                                <option value="">Seleccione</option>
+                                <option value="Madre">Madre</option>
+                                <option value="Padre">Padre</option>
+                                <option value="Hermano(a)">Hermano(a)</option>
+                                <option value="Cónyuge">Cónyuge</option>
+                                <option value="Encargado Legal">Encargado Legal</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+
+                            @error('contact2_relation')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Teléfono</label>
+                            <div wire:ignore>
+                                <input
+                                    id="phone-contact2"
+                                    type="tel"
+                                    class="form-control rounded-3"
+                                    placeholder="Ingrese teléfono">
+                            </div>
+                            @error('contact2_phone')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            @endif
+
+            {{-- PASO 4 --}}
+            @if($current_step == 4)
+
+            <h5 class="fw-bold mb-4" style="color:#01498d;">
+                Confirmar Información
+            </h5>
+
+            <p class="text-secondary">
+                Revise cuidadosamente sus datos antes de enviar el formulario.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle border rounded-4 overflow-hidden bg-white">
+
+                    <tbody>
+
+                        {{-- Datos personales --}}
+                        <tr class="table-light">
+                            <th colspan="2" class="fw-bold" style="color:#01498d;">
+                                Información Personal
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th style="width:35%;color:#01498d;">Identificación</th>
+                            <td>{{ $ide }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#01498d;">Nombre</th>
+                            <td>{{ $name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#01498d;">Apellidos</th>
+                            <td>{{ $lastname }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#01498d;">Correo</th>
+                            <td>{{ $email }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#01498d;">Teléfono</th>
+                            <td>{{ $mobile }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#01498d;">Carrera</th>
+                            <td>{{ $career }}</td>
+                        </tr>
+
+                        {{-- Contactos de emergencia --}}
+                        <tr class="table-light">
+                            <th colspan="2" class="fw-bold" style="color:#42ab34;">
+                                Contactos de Emergencia
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#42ab34;">Contacto #1</th>
+                            <td>{{ $contact1_name }} - {{ $contact1_phone }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#42ab34;">Parentesco</th>
+                            <td>{{ $contact1_relation }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#42ab34;">Contacto #2</th>
+                            <td>{{ $contact2_name }} - {{ $contact2_phone }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:#42ab34;">Parentesco</th>
+                            <td>{{ $contact2_relation }}</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="alert alert-light border mt-3 mb-0">
+                <small class="text-muted">
+                    Al presionar <strong>Enviar</strong>, confirma que toda la información suministrada es verídica y correcta.
+                </small>
+            </div>
+
+            @endif
+
+
+
+            {{-- ACCIONES --}}
+            <hr class="my-4" style="opacity:.12;">
+
+            <div class="d-flex {{ $current_step == 1 ? 'justify-content-end' : 'justify-content-between' }}">
+
+                @if($current_step >= 2)
+                <button type="button" wire:click="decreaseStep"
+                    class="btn px-4 rounded-4 fw-semibold"
+                    style="background:#eef4ff;color:#01498d;border:1px solid #c7dcf7;">
+                    <i class="fas fa-arrow-left me-2"></i>Atrás
+                </button>
+                @endif
+
+                @if($current_step < 4)
+                    <button type="button" id="btn-next"
+                    class="btn px-5 fw-bold rounded-4 text-white"
+                    style="background:linear-gradient(90deg,#01498d,#42ab34);">
+                    Siguiente <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                    @endif
+
+                    @if($current_step == 4)
+                    <button type="submit"
+                        class="btn px-5 fw-bold rounded-4 text-white"
+                        style="background:linear-gradient(90deg,#42ab34,#01498d);">
+                        <i class="fas fa-paper-plane me-2"></i>Enviar Registro
+                    </button>
+                    @endif
+            </div>
+
     </div>
+
+    </form>
+</div>
 </div>
 
 <div class="text-center mt-4">
