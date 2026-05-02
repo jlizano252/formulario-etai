@@ -265,7 +265,7 @@
                     'Ciencias Agropecuarias' => 'images/ciencias_agropecuarias.png',
                     'Turismo Sostenible' => 'images/turismo_sostenible.png',
                     'Gestion Empresarial' => 'images/gestion_empresarial.png',
-                    'Administracion de Empresas' => 'images/admin_empresas.png',
+                    'Administracion de Empresas Agropecuarias' => 'images/admin_empresas.png',
                     'Desarrollo de Software' => 'images/desarrollo_software.png',
                     'Administracion de Empresas (Virtual)' => 'images/admin_virtual.png',
                     'Contabilidad y Finanzas' => 'images/contabilidad_finanzas.png',
