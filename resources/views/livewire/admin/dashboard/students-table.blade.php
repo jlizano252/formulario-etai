@@ -50,7 +50,9 @@
                             wire:model.debounce.400ms="search"
                             type="text"
                             class="form-control rounded-4 border-0 shadow-sm ps-5"
-                            placeholder="Buscar por nombre, correo o identificación...">
+                            placeholder="Buscar por nombre, correo o identificación..."
+                            x-on:input="document.querySelector('[data-search-overlay]').style.display = 'flex'"
+                            x-on:keyup.escape="document.querySelector('[data-search-overlay]').style.display = 'none'">
                     </div>
                 </div>
 
@@ -101,12 +103,24 @@
 
 
         {{-- Tabla --}}
-        <div class="table-responsive">
+        <div class="table-responsive position-relative">
+
+            {{-- Overlay --}}
+            <div wire:loading.flex
+                class="position-absolute w-100 h-100 flex-column justify-content-center align-items-center rounded-3"
+                style="display:none;top:0;left:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(3px);z-index:10;">
+                <div class="mb-3">
+                    <div class="spinner-border" style="color:#01498d;width:2.5rem;height:2.5rem;"></div>
+                </div>
+                <p class="fw-semibold mb-1" style="color:#01498d;font-size:.9rem;">
+                    Cargando registros...
+                </p>
+                <small class="text-muted">Por favor, espere...</small>
+            </div>
 
             <table class="table table-hover align-middle mb-0">
 
                 <thead style="background:#01498d;">
-
                     <tr>
                         <th class="text-white ps-4 border-0">Estudiante</th>
                         <th class="text-white border-0">Identificación</th>
@@ -115,7 +129,6 @@
                         <th class="text-white border-0">Teléfono</th>
                         <th class="text-white pe-4 border-0">Registro</th>
                     </tr>
-
                 </thead>
 
                 <tbody>
@@ -125,7 +138,6 @@
                     <tr style="transition:.2s;">
 
                         <td class="ps-4">
-
                             <button
                                 wire:click="openModal({{ $student->id }})"
                                 wire:loading.class="opacity-50"
@@ -143,7 +155,6 @@
                                 </span>
 
                             </button>
-
                         </td>
 
                         <td>{{ $student->ide }}</td>
@@ -169,19 +180,15 @@
 
                     <tr>
                         <td colspan="6" class="text-center py-5">
-
                             <div class="mb-2">
                                 <i class="fas fa-folder-open fa-2x text-muted"></i>
                             </div>
-
                             <h6 class="fw-bold mb-1" style="color:#01498d;">
                                 No se encontraron registros
                             </h6>
-
                             <small class="text-muted">
                                 Intente con otro criterio de búsqueda.
                             </small>
-
                         </td>
                     </tr>
 
@@ -265,7 +272,7 @@
                     'Ciencias Agropecuarias' => 'images/ciencias_agropecuarias.png',
                     'Turismo Sostenible' => 'images/turismo_sostenible.png',
                     'Gestion Empresarial' => 'images/gestion_empresarial.png',
-                    'Administracion de Empresas' => 'images/admin_empresas.png',
+                    'Administracion de Empresas Agropecuarias' => 'images/admin_empresas.png',
                     'Desarrollo de Software' => 'images/desarrollo_software.png',
                     'Administracion de Empresas (Virtual)' => 'images/admin_virtual.png',
                     'Contabilidad y Finanzas' => 'images/contabilidad_finanzas.png',

@@ -250,8 +250,8 @@
                                 Gestión Empresarial
                             </option>
 
-                            <option value="Administracion de Empresas">
-                                Administración de Empresas
+                            <option value="Administracion de Empresas Agropecuarias">
+                                Administración de Empresas Agropecuarias
                             </option>
 
                             <option value="Desarrollo de Software">

@@ -116,6 +116,63 @@
         .main.admin-layout {
             background: transparent !important;
         }
+
+        /* Animación filas tabla */
+        @keyframes fadeInRow {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tbody tr {
+            animation: fadeInRow 0.3s ease forwards;
+        }
+
+        tbody tr:nth-child(1) {
+            animation-delay: 0.03s;
+        }
+
+        tbody tr:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+
+        tbody tr:nth-child(3) {
+            animation-delay: 0.09s;
+        }
+
+        tbody tr:nth-child(4) {
+            animation-delay: 0.12s;
+        }
+
+        tbody tr:nth-child(5) {
+            animation-delay: 0.15s;
+        }
+
+        tbody tr:nth-child(6) {
+            animation-delay: 0.18s;
+        }
+
+        tbody tr:nth-child(7) {
+            animation-delay: 0.21s;
+        }
+
+        tbody tr:nth-child(8) {
+            animation-delay: 0.24s;
+        }
+
+        tbody tr:nth-child(9) {
+            animation-delay: 0.27s;
+        }
+
+        tbody tr:nth-child(10) {
+            animation-delay: 0.30s;
+        }
     </style>
 
 </head>
