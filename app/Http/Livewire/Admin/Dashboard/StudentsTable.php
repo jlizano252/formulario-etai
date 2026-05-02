@@ -84,4 +84,9 @@ class StudentsTable extends Component
 
         return view('livewire.admin.dashboard.students-table', compact('students'));
     }
+    
+    public function updatedSearch(): void
+    {
+        // necesario para que wire:target lo reconozca
+    }
 }

@@ -100,13 +100,12 @@
 
         </div>
 
-
-
         {{-- Tabla --}}
         <div class="table-responsive position-relative">
 
             {{-- Overlay --}}
-            <div wire:loading.flex
+            <div wire:loading.flex wire:target="search, gotoPage, nextPage, previousPage, openModal"
+                 data-search-overlay
                 class="position-absolute w-100 h-100 flex-column justify-content-center align-items-center rounded-3"
                 style="display:none;top:0;left:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(3px);z-index:10;">
                 <div class="mb-3">
@@ -117,6 +116,7 @@
                 </p>
                 <small class="text-muted">Por favor, espere...</small>
             </div>
+
 
             <table class="table table-hover align-middle mb-0">
 
