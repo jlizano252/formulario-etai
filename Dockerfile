@@ -1,21 +1,27 @@
-FROM richarvey/nginx-php-fpm:latest
+FROM php:8.3-apache
 
 WORKDIR /var/www/html
 
-COPY . .
+RUN apt-get update && apt-get install -y \
+    git unzip zip curl libzip-dev libpng-dev libonig-dev libxml2-dev nodejs npm \
+    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
-ENV WEBROOT=/var/www/html/public
-ENV SKIP_COMPOSER=1
-ENV RUN_SCRIPTS=1
-ENV REAL_IP_HEADER=1
-ENV PHP_ERRORS_STDERR=1
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-ENV LOG_CHANNEL=stderr
-ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN a2enmod rewrite
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
+RUN npm install
+RUN npm run build
+
+RUN chown -R www-data:www-data storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
 
-CMD ["/start.sh"]
+COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+
+EXPOSE 80
+
+CMD ["apache2-foreground"]
