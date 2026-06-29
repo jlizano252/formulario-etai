@@ -14,7 +14,7 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
-RUN npm install
+RUN npm ci
 RUN npm run build
 
 RUN chown -R www-data:www-data storage bootstrap/cache
